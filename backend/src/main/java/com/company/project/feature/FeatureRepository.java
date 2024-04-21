@@ -1,7 +1,6 @@
 package com.company.project.feature;
 
 import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

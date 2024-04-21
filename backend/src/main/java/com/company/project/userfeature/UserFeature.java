@@ -1,23 +1,14 @@
 package com.company.project.userfeature;
 
-import java.io.Serializable;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
+import com.company.project.feature.Feature;
+import com.company.project.user.User;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
-
-import com.company.project.feature.Feature;
-import com.company.project.user.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,5 +33,4 @@ public class UserFeature {
     @ManyToOne
     @JoinColumn(name = "feature_id")
     Feature feature;
-
 }

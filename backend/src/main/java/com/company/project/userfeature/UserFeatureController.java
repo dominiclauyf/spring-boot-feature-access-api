@@ -1,9 +1,7 @@
 package com.company.project.userfeature;
 
-import java.util.List;
-
 import javax.validation.Valid;
-
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import lombok.AllArgsConstructor;
-
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "feature")
@@ -23,15 +19,18 @@ public class UserFeatureController {
 
     private final UserFeatureService userFeatureService;
 
-    @GetMapping(params = { "email", "featureName" })
-    public ResponseEntity<UserFeatureResponseDTO> getUserFeatures(@RequestParam(value = "email") String email,
+    @GetMapping(params = {"email", "featureName"})
+    public ResponseEntity<UserFeatureResponseDTO> getUserFeatures(
+            @RequestParam(value = "email") String email,
             @RequestParam(value = "featureName") String featureName) {
-        return ResponseEntity
-                .ok(new UserFeatureResponseDTO(userFeatureService.isUserCanAccessFeature(email, featureName)));
+        return ResponseEntity.ok(
+                new UserFeatureResponseDTO(
+                        userFeatureService.isUserCanAccessFeature(email, featureName)));
     }
 
     @PostMapping
-    public void updateUserFeature(@RequestBody @Valid UserFeatureUpdateRequestDTO userFeatureRequest) {
+    public void updateUserFeature(
+            @RequestBody @Valid UserFeatureUpdateRequestDTO userFeatureRequest) {
         // Assuming FeatureRequest is a POJO representing the JSON request
         // Validate featureRequest if necessary
 
@@ -46,5 +45,4 @@ public class UserFeatureController {
             throw new ResponseStatusException(HttpStatus.NOT_MODIFIED, "Database update failed");
         }
     }
-
 }

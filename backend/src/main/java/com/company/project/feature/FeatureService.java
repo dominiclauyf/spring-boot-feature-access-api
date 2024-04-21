@@ -2,12 +2,9 @@ package com.company.project.feature;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.ValidationException;
-
-import org.springframework.stereotype.Service;
-
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
@@ -25,6 +22,5 @@ public class FeatureService {
         }
         Feature feature = Feature.builder().name(featureRequest.getName()).build();
         return featureRepository.save(feature);
-
     }
 }

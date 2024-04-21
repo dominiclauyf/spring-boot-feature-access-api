@@ -1,7 +1,6 @@
 package com.company.project.feature;
 
 import javax.validation.constraints.NotBlank;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FeatureRequestDTO {
-    @NotBlank
-    String name;
+    @NotBlank String name;
 }

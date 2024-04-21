@@ -2,9 +2,7 @@ package com.company.project;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.validation.ValidationException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,9 +18,13 @@ public class CustomExceptionHandler {
     public Map<String, String> handleInvalidArgument(MethodArgumentNotValidException exception) {
 
         Map<String, String> errorMap = new HashMap<>();
-        exception.getBindingResult().getFieldErrors().forEach(error -> {
-            errorMap.put(error.getField(), error.getDefaultMessage());
-        });
+        exception
+                .getBindingResult()
+                .getFieldErrors()
+                .forEach(
+                        error -> {
+                            errorMap.put(error.getField(), error.getDefaultMessage());
+                        });
         return errorMap;
     }
 

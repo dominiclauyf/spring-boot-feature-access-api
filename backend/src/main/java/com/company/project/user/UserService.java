@@ -2,12 +2,9 @@ package com.company.project.user;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.ValidationException;
-
-import org.springframework.stereotype.Service;
-
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
@@ -25,7 +22,5 @@ public class UserService {
         }
         User user = User.builder().email(userRequest.getEmail()).build();
         return userRepository.save(user);
-
     }
-
 }

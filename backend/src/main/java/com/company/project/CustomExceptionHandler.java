@@ -29,7 +29,7 @@ public class CustomExceptionHandler {
     }
 
     // It shows only the user friendly error message.
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationException.class)
     public Map<String, String> handleValidationException(ValidationException exception) {
         Map<String, String> errorMap = new HashMap<>();

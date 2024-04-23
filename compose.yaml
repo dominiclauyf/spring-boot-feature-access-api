@@ -8,6 +8,8 @@ services:
     networks:
       - spring-postgres
     command: tail -F anything
+    volumes:
+      - ./backend:/workdir/server
 
   db:
     image: postgres
@@ -16,10 +18,11 @@ services:
       - db-password
     volumes:
       - db-data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
     networks:
       - spring-postgres
     environment:
-      - POSTGRES_DB=example
+      - POSTGRES_MULTIPLE_DATABASES=example,testing
       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
     expose:
       - 5432

@@ -7,7 +7,8 @@ services:
       - POSTGRES_DB=example
     networks:
       - spring-postgres
-    command: tail -F anything
+    # To do development can uncomment the line below 
+    # command: tail -F anything
     volumes:
       - ./backend:/workdir/server
 

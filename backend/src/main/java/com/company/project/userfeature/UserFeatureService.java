@@ -53,14 +53,13 @@ public class UserFeatureService {
             }
         } else {
             if (existingUserFeature.isPresent()) {
-                // Delete
+                userFeatureRepository.deleteById(existingUserFeature.get().getId());
+                return true;
 
             } else {
                 return false;
             }
         }
-
-        return true;
     }
 
     void validateUserEmailAndFeatureName(String email, String featureName)

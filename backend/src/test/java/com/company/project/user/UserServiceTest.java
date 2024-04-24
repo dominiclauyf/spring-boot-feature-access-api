@@ -22,14 +22,10 @@ public class UserServiceTest {
     @MockBean private UserRepository userRepository;
 
     private String email = "john@example.com";
+    private User sampleUser = User.builder().email(this.email).build();
 
     @Test
     public void testGetUsers() {
-        // Define a sample user
-        User sampleUser = new User();
-        sampleUser.setId(1L);
-        sampleUser.setEmail(this.email);
-
         // Mock the repository behavior
         when(userRepository.findAll()).thenReturn(List.of(sampleUser));
 
@@ -44,9 +40,6 @@ public class UserServiceTest {
 
     @Test
     public void testAddNewUser() {
-        // Define a sample user
-        User sampleUser = User.builder().email(this.email).build();
-
         // Mock the repository behavior
         when(userRepository.save(sampleUser)).thenReturn(sampleUser);
 
@@ -59,9 +52,6 @@ public class UserServiceTest {
 
     @Test
     public void testRaiseExceptionAddNewUserWhenEmailExist() {
-        // Define a sample user
-        User sampleUser = User.builder().email(this.email).build();
-
         // Mock the repository behavior
         when(userRepository.findByEmail(this.email)).thenReturn(Optional.of(sampleUser));
 
